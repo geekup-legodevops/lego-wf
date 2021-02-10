@@ -63,55 +63,55 @@ jobs:
   #       run: |
   #         cd $GITHUB_WORKSPACE/deploy/test-scripts/k8s
   #         ./after-run.sh
-  test-aws-ami:
-    runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_KEY_PAIR_NAME: ${{ secrets.AWS_KEY_PAIR_NAME }}
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: prepare-test-environment
-        run: |
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
-          ./pre-run.sh
-      - name: run-test
-        if: ${{ always() }}
-        run: |
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
-          ./run-test.sh
-      - name: clean-up-environment-after-test
-        if: ${{ always() }} 
-        run: |
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
-          ./after-run.sh
-  # Testing heroku scripts
-  # test-heroku:
+  # test-aws-ami:
   #   runs-on: ubuntu-latest
   #   env:
-  #     HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
-  #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  #     MONGO_URI: ${{ secrets.MONGO_URI }}
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #     AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #     AWS_KEY_PAIR_NAME: ${{ secrets.AWS_KEY_PAIR_NAME }}
+  #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   #   steps:
   #     - name: Checkout
   #       uses: actions/checkout@v2
   #     - name: prepare-test-environment
   #       run: |
-  #         cd $GITHUB_WORKSPACE/deploy/test-scripts/heroku
+  #         cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
   #         ./pre-run.sh
   #     - name: run-test
   #       if: ${{ always() }}
   #       run: |
-  #         cd $GITHUB_WORKSPACE/deploy/test-scripts/heroku
+  #         cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
   #         ./run-test.sh
   #     - name: clean-up-environment-after-test
   #       if: ${{ always() }} 
   #       run: |
-  #         cd $GITHUB_WORKSPACE/deploy/test-scripts/heroku
+  #         cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
   #         ./after-run.sh
+  # Testing heroku scripts
+  test-heroku:
+    runs-on: ubuntu-latest
+    env:
+      HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: prepare-test-environment
+        run: |
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/heroku
+          ./pre-run.sh
+      - name: run-test
+        if: ${{ always() }}
+        run: |
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/heroku
+          ./run-test.sh
+      - name: clean-up-environment-after-test
+        if: ${{ always() }} 
+        run: |
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/heroku
+          ./after-run.sh
   # test-ansible:
   #   runs-on: ubuntu-latest
   #   env:
