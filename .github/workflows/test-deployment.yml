@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: prepare-test-environment
         run: |
-          echo $GITHUB_WORKSPACE
+          echo "Deploying to production server on branch $GITHUB_REF"
           cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
           ./pre-run.sh
       - name: run-test
