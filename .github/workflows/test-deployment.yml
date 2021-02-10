@@ -17,7 +17,17 @@ jobs:
         # Checkout the repository to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Environment details
+      - name: prepare-test-environment
+        run: echo "Deploying to production server"
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
+          pwd
+          ls -la
+          $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
+      - name: run-test
         run: |
-          echo "PWD: $PWD"
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
+          ./run-test.sh
+      - name: clean-up-environment-after-test
+        run: |
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
+          ./after-run.sh
