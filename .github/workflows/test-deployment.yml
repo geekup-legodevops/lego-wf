@@ -18,7 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: prepare-test-environment
-        run: echo "Deploying to production server"
+        run: |
+          echo "Deploying to production server"
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           pwd
           ls -la
