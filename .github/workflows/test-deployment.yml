@@ -13,10 +13,7 @@ defaults:
 jobs:
   test-install-sh-script:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app
-        shell: bash
     steps:
-      - name: prepare-test-environment
-        run: echo "OK"
+      - name: Environment details
+        run: |
+          echo "PWD: $PWD"
