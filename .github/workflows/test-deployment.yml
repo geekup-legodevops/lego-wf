@@ -32,10 +32,12 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
           $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
       - name: run-test
+        if: ${{ always() }}
         run: |
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           ./run-test.sh
       - name: clean-up-environment-after-test
+        if: ${{ always() }} 
         run: |
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           ./after-run.sh
