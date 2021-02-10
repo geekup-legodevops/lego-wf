@@ -86,7 +86,7 @@ jobs:
       - name: clean-up-environment-after-test
         if: ${{ always() }} 
         run: |
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami:
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami
           ./after-run.sh
   # Testing heroku scripts
   # test-heroku:
