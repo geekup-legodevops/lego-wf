@@ -25,12 +25,11 @@ jobs:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     steps:
       - name: prepare-test-environment
-        run: |
-          echo "Deploying to production server: $AWS_DEFAULT_REGION"
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
-          pwd
-          ls -la
-          $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
+        run: echo "Deploying to production server $AWS_DEFAULT_REGION"
+          # cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
+          # pwd
+          # ls -la
+          # $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
       - name: run-test
         run: |
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
