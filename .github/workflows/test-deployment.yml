@@ -52,8 +52,7 @@ jobs:
       - name: prepare-test-environment
         run: |
           cd $GITHUB_WORKSPACE/deploy/test-scripts/k8s
-          chmod +x $GITHUB_WORKSPACE/deploy/test-scripts/heroku/pre-run.sh
-          $GITHUB_WORKSPACE/deploy/test-scripts/heroku/pre-run.sh
+          ./pre-run.sh
       - name: run-test
         if: ${{ always() }}
         run: |
