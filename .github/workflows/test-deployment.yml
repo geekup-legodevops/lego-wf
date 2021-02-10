@@ -30,7 +30,7 @@ jobs:
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           pwd
           ls -la
-          ./pre-run.sh
+          $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
       - name: run-test
         run: |
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
