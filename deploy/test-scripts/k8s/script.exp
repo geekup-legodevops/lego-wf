@@ -43,7 +43,7 @@ if {$force_conservative} {
 
 
 set timeout 240
-spawn $env(CI_PROJECT_DIR)/deploy/k8s/install.k8s.sh
+spawn $env(GITHUB_WORKSPACE)/deploy/k8s/install.k8s.sh
 match_max 100000
 expect -exact "Installation Directory \[appsmith\]: "
 send -- "\r"

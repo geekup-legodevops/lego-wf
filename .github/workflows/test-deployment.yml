@@ -27,14 +27,14 @@ jobs:
       - name: prepare-test-environment
         run: |
           echo "Deploying to production server: $AWS_DEFAULT_REGION"
-          cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           pwd
           ./pre-run.sh
       - name: run-test
         run: |
-          cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           ./run-test.sh
       - name: clean-up-environment-after-test
         run: |
-          cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
+          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           ./after-run.sh
