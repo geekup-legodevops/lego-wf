@@ -9,13 +9,13 @@ on:
 # Change the working directory for all the jobs in this workflow
 defaults:
   run:
-    working-directory: app/deploy
+    working-directory: deploy
 jobs:
   test-install-sh-script:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: app/deploy
+        working-directory: deploy/test-scripts/docker-compose
         shell: bash
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
