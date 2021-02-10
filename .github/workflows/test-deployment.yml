@@ -22,6 +22,7 @@ jobs:
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           pwd
           ls -la
+          chmod +x $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
           $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
       - name: run-test
         run: |
