@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: prepare-test-environment
         run: |
-          echo "Deploying to production server on branch $AWS_DEFAULT_REGION"
+          echo "Deploying to production server: $AWS_DEFAULT_REGION"
           cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
           ./pre-run.sh
       - name: run-test
