@@ -1,0 +1,39 @@
+name: Appsmith Deployment testing Workflow
+
+on:
+  # This line enables manual triggering of this workflow.
+  workflow_dispatch:
+
+  push:
+    branches: [feature/test-self-hosted-installation-script-testing]
+# Change the working directory for all the jobs in this workflow
+defaults:
+  run:
+    working-directory: app/deploy
+jobs:
+  test-install-sh-script:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app/deploy
+        shell: bash
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_KEY_PAIR_NAME: ${{ secrets.AWS_KEY_PAIR_NAME }}
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      CI_PROJECT_DIR: ${{GITHUB_WORKSPACE}}
+    steps:
+      - name: prepare-test-environment
+        run: |
+          cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
+          ./pre-run.sh
+      - name: run-test
+        run: |
+          cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
+          ./run-test.sh
+      - name: clean-up-environment-after-test
+        run: |
+          cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
+          ./after-run.sh
