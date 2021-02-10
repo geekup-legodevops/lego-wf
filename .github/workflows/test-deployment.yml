@@ -89,6 +89,7 @@ jobs:
   #       run: |
   #         cd $GITHUB_WORKSPACE/deploy/test-scripts/aws-ami:
   #         ./after-run.sh
+  # Testing heroku scripts
   test-heroku:
     runs-on: ubuntu-latest
     env:
