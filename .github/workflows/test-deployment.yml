@@ -25,16 +25,16 @@ jobs:
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     steps:
       - name: prepare-test-environment
-        run: echo "Deploying to production server $AWS_DEFAULT_REGION"
+        run: echo "Deploying to production server"
           # cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           # pwd
           # ls -la
           # $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
-      - name: run-test
-        run: |
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
-          ./run-test.sh
-      - name: clean-up-environment-after-test
-        run: |
-          cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
-          ./after-run.sh
+      # - name: run-test
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
+      #     ./run-test.sh
+      # - name: clean-up-environment-after-test
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
+      #     ./after-run.sh
