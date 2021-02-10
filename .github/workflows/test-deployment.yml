@@ -23,10 +23,11 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_KEY_PAIR_NAME: ${{ secrets.AWS_KEY_PAIR_NAME }}
       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      CI_PROJECT_DIR: ${{$GITHUB_WORKSPACE}}
+      CI_PROJECT_DIR: $ITHUB_WORKSPACE
     steps:
       - name: prepare-test-environment
         run: |
+          CI_PROJECT_DIR=$GITHUB_WORKSPACE
           cd $CI_PROJECT_DIR/deploy/test-scripts/docker-compose
           ./pre-run.sh
       - name: run-test
