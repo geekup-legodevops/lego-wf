@@ -17,24 +17,6 @@ jobs:
       run:
         working-directory: deploy
         shell: bash
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_KEY_PAIR_NAME: ${{ secrets.AWS_KEY_PAIR_NAME }}
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     steps:
       - name: prepare-test-environment
-        run: echo "Deploying to production server"
-          # cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
-          # pwd
-          # ls -la
-          # $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose/pre-run.sh
-      # - name: run-test
-      #   run: |
-      #     cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
-      #     ./run-test.sh
-      # - name: clean-up-environment-after-test
-      #   run: |
-      #     cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
-      #     ./after-run.sh
+        run: echo "OK"
