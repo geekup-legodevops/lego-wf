@@ -15,7 +15,7 @@ sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt -y install ansible
 
 # Install python3 & pip
-sudo apt -y install python3-pip
+sudo apt -y install python3-pip python3-setuptools
 pip3 install boto boto3 botocore --user
 
 # Generate variables.yml
