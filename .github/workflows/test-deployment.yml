@@ -29,6 +29,7 @@ jobs:
           echo "Deploying to production server: $AWS_DEFAULT_REGION"
           cd $GITHUB_WORKSPACE/deploy/test-scripts/docker-compose
           pwd
+          ls -la
           ./pre-run.sh
       - name: run-test
         run: |
